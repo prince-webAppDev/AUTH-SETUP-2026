@@ -73,3 +73,23 @@ export const loginUser = async (req, res) => {
         res.status(500).json({ success: false, error: error.message });
     }
 };
+
+
+export const logoutUser = async (req, res) => {
+    try {
+        res.clearCookie("token");
+        res.status(200).json({ success: true, message: "User logged out successfully"});
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+
+export const getMe = async (req, res) => {
+    try {
+        const user = await UserModel.findById(req.user.id);
+        res.status(200).json({ success: true, user});
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+};

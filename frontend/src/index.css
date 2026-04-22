@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #8b5cf6;
+  --color-brand-secondary: #ec4899;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --bg-image: url('/login-bg.png');
+}
+
+body {
+  background-color: #030712;
+  color: #f8fafc;
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-hidden focus:border-brand-primary/50 focus:ring-2 focus:ring-brand-primary/20 transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply w-full bg-linear-to-r from-brand-primary to-brand-secondary text-white font-semibold py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all duration-300 shadow-lg shadow-brand-primary/20;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
